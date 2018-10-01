@@ -29,10 +29,11 @@ defmodule Hangman.Game do
   end
 
   def make_move(game, guess) do
-    game
+    game = game
       |> check_already_guessed(guess)
       |> check_guess(guess)
       |> player_status
+    {game, tally(game)}
   end
 
   def check_already_guessed(game, guess) do
