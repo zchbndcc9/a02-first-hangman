@@ -68,7 +68,7 @@ defmodule Hangman.Game do
 
   def player_status(game) do
     case game do
-      %Hangman.Game{turns_left: 0} -> %{game | game_state: :lost}
+      %Hangman.Game{turns_left: 0} -> %{game | game_state: :lost, letters: game.word_to_guess}
       %Hangman.Game{word_to_guess: word, letters: word} -> %{game | game_state: :won}
       %Hangman.Game{} -> game
     end
