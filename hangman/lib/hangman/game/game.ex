@@ -5,6 +5,14 @@ defmodule Hangman.Game do
     Dictionary.random_word()
     |> String.split("", trim: true)
   end
+  
+  # Filters Hangman.Game struct to remove the word_to_guess
+  def tally(tally) do
+    tally
+    |> Map.from_struct
+    |> Enum.reject(fn {key, _value} -> key == :word_to_guess end)
+    |> Enum.into(%{})
+  end
 
   def make_move(game, guess) do
     game
